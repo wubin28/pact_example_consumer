@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dong.yoogo</groupId>
-    <artifactId>pact_example_client</artifactId>
+    <artifactId>pact_example_consumer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
@@ -26,6 +26,17 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.3.RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

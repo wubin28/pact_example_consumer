@@ -1,5 +1,5 @@
-pact_example_client.iml
 .idea/
 target/
 *.class
 *.jar
+*.iml
