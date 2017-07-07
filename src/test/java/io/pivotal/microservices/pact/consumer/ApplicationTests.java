@@ -22,13 +22,12 @@ import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
 
-
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@RunWith(SpringJUnit4ClassRunner.class)
 public class ApplicationTests {
 
 	@Rule
 	public PactProviderRuleMk2 providerMock = new PactProviderRuleMk2("Foo_Provider", "localhost", 9090,this);
-
-
 
 	@Pact(provider="Foo_Provider", consumer="Foo_Consumer")
 	public RequestResponsePact createFragment(PactDslWithProvider builder) {

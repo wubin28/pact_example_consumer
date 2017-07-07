@@ -1,14 +1,13 @@
 package io.pivotal.microservices.pact.consumer;
 
-import au.com.dius.pact.consumer.*;
+import au.com.dius.pact.consumer.Pact;
+import au.com.dius.pact.consumer.PactProviderRuleMk2;
+import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.model.PactFragment;
 import au.com.dius.pact.model.RequestResponsePact;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -26,18 +25,22 @@ public class ConsumerPortTest {
 
     @Pact(provider="Foo_Provider", consumer="Foo_Consumer")
     public RequestResponsePact createFragment(PactDslWithProvider builder) {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json;charset=UTF-8");
-
         return builder.given("Foo_State")
                 .uponReceiving("a request for Foos")
                     .path("/foos")
                     .method("GET")
                 .willRespondWith()
-                    .headers(headers)
+                    .headers(reqHeader())
                     .status(200)
                     .body("[{\"value\":42}, {\"value\":100}]")
                 .toPact();
+    }
+
+    @NotNull
+    private Map<String, String> reqHeader() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json;charset=UTF-8");
+        return headers;
     }
 
     @Test
