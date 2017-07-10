@@ -19,7 +19,7 @@ import static junit.framework.TestCase.assertEquals;
 public class ConsumerPortTest {
 
     @Rule
-    public PactProviderRuleMk2 rule = new PactProviderRuleMk2("Foo_Provider", "localhost", 8080, this);
+    public PactProviderRuleMk2 rule = new PactProviderRuleMk2("Foo_Provider", "localhost", 9090, this);
 
 
 
